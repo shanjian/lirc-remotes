@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<irplus>
+  <device manufacturer="fisher_price" model="C0108" columns="4" format="PRONTO_HEX">
+    <button label="nota">0000 006D 0005 0000 0005 0020 0021 001F 0021 001F 0021 001F 0022 0FC5</button>
+  </device>
+</irplus>

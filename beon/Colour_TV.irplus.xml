@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<irplus>
+  <device manufacturer="beon" model="Colour_TV" columns="4" format="PRONTO_HEX">
+    <button label="power">0000 006D 0004 0000 0032 0020 00FE 03EB 0032 0020 00FE 03EB</button>
+    <button label="mute">0000 006D 0006 0000 0032 0021 005A 0023 0082 03EB 0032 0021 005A 0023 0082 03EB</button>
+    <button label="progup">0000 006D 0006 0000 0034 001E 0085 0022 005A 03EB 0034 001E 0085 0022 005A 03EB</button>
+    <button label="voldwn">0000 006D 0006 0000 0034 001F 0033 0072 005B 03EB 0034 001F 0033 0072 005B 03EB</button>
+    <button label="volup">0000 006D 0006 0000 0034 001F 005B 004A 005A 03EB 0034 001F 005B 004A 005A 03EB</button>
+    <button label="progdwn">0000 006D 0008 0000 0034 001F 0033 0020 0031 0021 005A 03EB 0034 001F 0033 0020 0031 0021 005A 03EB</button>
+  </device>
+</irplus>

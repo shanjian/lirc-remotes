@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<irplus>
+  <device manufacturer="osram" model="OSRAM" columns="4" format="PRONTO_HEX">
+    <button label="OK">0000 006D 000C 0000 0031 000E 0011 0030 0011 0030 0011 0030 0011 0030 0031 000E 0011 0030 0011 0030 0011 0030 0011 0030 0031 000E 0011 0526</button>
+  </device>
+</irplus>

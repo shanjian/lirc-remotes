@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<irplus>
+  <device manufacturer="canon" model="RC-1_RC-5" columns="4" format="PRONTO_HEX">
+    <button label="S">0000 006D 0002 0000 0015 010F 0015 0ED8</button>
+    <button label="X_KEY_2S">0000 006D 0002 0000 0015 00C8 0015 0ED8</button>
+  </device>
+</irplus>
