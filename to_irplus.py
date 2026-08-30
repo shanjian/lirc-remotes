@@ -8,10 +8,10 @@ Every <code> carries a Pronto hex payload in its <ccf> child, which maps
 directly onto irplus's PRONTO_HEX format, so no timing math is needed.
 
 Usage:
-    ./to_irplus.py sony/RM-470.xml            # one file
-    ./to_irplus.py sony                       # one vendor
-    ./to_irplus.py .                          # everything
-    ./to_irplus.py sony/RM-470.xml -o out.xml # explicit output file
+    ./to_irplus.py sony/RM-470.xml            # -> sony/RM-470.irplus.xml
+    ./to_irplus.py sony                       # one vendor, in place
+    ./to_irplus.py .                          # everything, in place
+    ./to_irplus.py . -o irplus                # everything, into a separate tree
 """
 
 import argparse
@@ -25,6 +25,8 @@ from xml.sax.saxutils import quoteattr, escape
 # lirc2xml produced files that are not valid XML: bare & in attributes, raw
 # <, > and " inside name="..." values, and stray control bytes. Repair all
 # three before parsing, since no XML parser (irplus's included) accepts them.
+SUFFIX = ".irplus.xml"
+
 BROKEN_ATTR = [
     re.compile(r'(<code name=")(.*)(" codeno="[^"]*"\s*/?>)'),
     re.compile(r'(<remote name=")(.*)("\s*>)'),
@@ -105,18 +107,22 @@ def render(manufacturer, devices, columns):
 def main():
     ap = argparse.ArgumentParser(description="Convert lirc2xml files to irplus XML.")
     ap.add_argument("path", help="an .xml file, a vendor directory, or . for the whole repo")
-    ap.add_argument("-o", "--output", help="output file (single input) or directory (default: irplus/)")
+    ap.add_argument("-o", "--output", help="output file (single input) or directory tree "
+                                           "(default: beside each source file)")
     ap.add_argument("-c", "--columns", type=int, default=4, help="buttons per row in irplus (default: 4)")
     args = ap.parse_args()
 
     if os.path.isdir(args.path):
-        sources = sorted(glob.glob(os.path.join(args.path, "**", "*.xml"), recursive=True))
-        out_dir = args.output or "irplus"
+        sources = sorted(
+            p for p in glob.glob(os.path.join(args.path, "**", "*.xml"), recursive=True)
+            # Never re-convert our own output.
+            if not p.endswith(SUFFIX)
+        )
         single = None
     else:
         sources = [args.path]
-        single = args.output
-        out_dir = os.path.dirname(args.output) if args.output else "irplus"
+        single = args.output if args.output and not os.path.isdir(args.output) else None
+    out_dir = args.output if args.output and not single else None
 
     converted = failed = skipped = 0
     for source in sources:
@@ -131,13 +137,14 @@ def main():
             skipped += 1
             continue
 
+        stem = os.path.splitext(os.path.basename(source))[0] + SUFFIX
         if single:
             target = single
+        elif out_dir:
+            target = os.path.join(out_dir, manufacturer, stem)
         else:
-            target = os.path.join(
-                out_dir, manufacturer,
-                os.path.splitext(os.path.basename(source))[0] + ".irplus.xml",
-            )
+            # Alongside the source, e.g. sony/RM-470.xml -> sony/RM-470.irplus.xml
+            target = os.path.join(os.path.dirname(source), stem)
         os.makedirs(os.path.dirname(os.path.abspath(target)), exist_ok=True)
         with open(target, "w", encoding="utf-8") as fh:
             fh.write(render(manufacturer, devices, args.columns))
