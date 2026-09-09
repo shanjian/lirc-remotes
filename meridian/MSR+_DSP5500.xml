@@ -1,0 +1,154 @@
+<lircremotes creator="to_irplus contributors" configfile="">
+  <!--
+    Meridian MSR+ codes for the DSP5500, RC5X (extended RC5) at 36kHz.
+
+    Supplied as raw microsecond timings and verified by decoding each one
+    as RC5 Manchester: all 32 quantise onto the 889us half-bit grid, all
+    yield a 14-bit frame with start bit 1 and address 19, and no two
+    frames or commands collide. Address 19 is what the existing MSR.xml
+    codes decode to as well.
+
+    The <ccf> payloads below are re-encoded from the decoded frames using
+    canonical RC5 timings (889us / 1778us) rather than transcribed, so
+    they carry no capture jitter; each one was checked to decode back to
+    the same 14 bits. Deviation from the supplied timings peaks at 21us.
+
+    S2 is the RC5X field bit: 0 means the 6-bit command is extended by 64.
+    Skip/Scan carry S2=1, i.e. they are plain RC5 commands 33/50/52.
+  -->
+  <remote name="MSR+ (DSP5500)">
+    <lircdata type="RC5" bits="14" eps="30" aeps="100" pone="889" sone="889" pzero="889" szero="889" freq="36000" gap="113792" toggle_bit_mask="2048"/>
+    <!-- Source select -->
+    <code name="Radio" codeno="0x00000000000024EC">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="108" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0040 0020 0020 0040 0020 0020 0cac</ccf>
+    </code>
+    <code name="Tape" codeno="0x00000000000024ED">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="109" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0040 0020 0020 0040 0040 0020 0cac</ccf>
+    </code>
+    <code name="Sat" codeno="0x00000000000024EE">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="110" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0040 0020 0020 0020 0020 0040 0cac</ccf>
+    </code>
+    <code name="Cable" codeno="0x00000000000024EF">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="111" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0040 0020 0020 0020 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="TV" codeno="0x00000000000024F3">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="115" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0020 0040 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="DVD" codeno="0x00000000000024F4">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="116" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0040 0040 0020 0020 0cac</ccf>
+    </code>
+    <code name="Disc" codeno="0x00000000000024F5">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="117" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0040 0040 0040 0020 0cac</ccf>
+    </code>
+    <code name="VCR1" codeno="0x00000000000024F0">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="112" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0020 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="VCR2" codeno="0x00000000000024F1">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="113" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0020 0020 0020 0040 0020 0cac</ccf>
+    </code>
+    <code name="SLS" codeno="0x00000000000024F2">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="114" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0020 0040 0040 0cac</ccf>
+    </code>
+    <!-- Navigation / menu -->
+    <code name="Cursor Up" codeno="0x00000000000024D0">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="80" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0020 0020 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Cursor Down" codeno="0x00000000000024D1">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="81" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0020 0020 0020 0020 0040 0020 0cac</ccf>
+    </code>
+    <code name="Cursor Left" codeno="0x00000000000024D5">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="85" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 0009 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0040 0040 0040 0020 0cac</ccf>
+    </code>
+    <code name="Cursor Right" codeno="0x00000000000024D6">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="86" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 0009 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0040 0020 0020 0040 0cac</ccf>
+    </code>
+    <code name="Menu" codeno="0x00000000000024D2">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="82" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 0009 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0020 0020 0040 0040 0cac</ccf>
+    </code>
+    <code name="Return" codeno="0x00000000000024D3">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="83" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0020 0020 0040 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Enter" codeno="0x00000000000024D7">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="87" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0040 0040 0020 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Top Menu" codeno="0x00000000000024F9">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="121" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0020 0020 0040 0020 0020 0040 0020 0cac</ccf>
+    </code>
+    <code name="Display" codeno="0x00000000000024FA">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="122" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0020 0020 0040 0040 0040 0cac</ccf>
+    </code>
+    <code name="DSP" codeno="0x00000000000024DD">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="93" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0020 0020 0020 0020 0040 0040 0020 0cac</ccf>
+    </code>
+    <!-- Function-shifted navigation -->
+    <code name="Fn.Cursor Up" codeno="0x00000000000024DE">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="94" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0020 0020 0020 0020 0020 0020 0040 0cac</ccf>
+    </code>
+    <code name="Fn.Cursor Down" codeno="0x00000000000024DF">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="95" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0040 0020 0020 0020 0020 0020 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Fn.Cursor Left" codeno="0x00000000000024E0">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="96" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0020 0020 0020 0020 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Fn.Cursor Right" codeno="0x00000000000024E1">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="97" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0cac</ccf>
+    </code>
+    <!-- Transport / extras -->
+    <code name="Skip <<" codeno="0x00000000000034E1">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="33" misc="S2=1 T=0" error=""/>
+      <ccf>0000 0073 000b 0000 0020 0020 0040 0040 0040 0020 0020 0040 0020 0020 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0cac</ccf>
+    </code>
+    <code name="Scan >>" codeno="0x00000000000034F4">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="52" misc="S2=1 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0020 0020 0040 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0040 0040 0020 0020 0cac</ccf>
+    </code>
+    <code name="Scan <<" codeno="0x00000000000034F2">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="50" misc="S2=1 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0020 0020 0040 0040 0040 0020 0020 0040 0020 0020 0020 0020 0020 0020 0040 0020 0020 0040 0040 0cac</ccf>
+    </code>
+    <code name="Red/Record" codeno="0x00000000000024C8">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="72" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0020 0020 0040 0040 0020 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Green/Band" codeno="0x00000000000024C9">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="73" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0020 0020 0040 0040 0020 0020 0040 0020 0cac</ccf>
+    </code>
+    <code name="Yellow/Angle" codeno="0x00000000000024CA">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="74" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 0009 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0020 0020 0040 0040 0040 0040 0cac</ccf>
+    </code>
+    <code name="Blue/OSD" codeno="0x00000000000024CB">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="75" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0020 0020 0040 0040 0040 0020 0020 0020 0cac</ccf>
+    </code>
+    <code name="Game" codeno="0x00000000000024CC">
+      <decoding protocol="RC5X" device="19" subdevice="-1" obc="76" misc="S2=0 T=0" error=""/>
+      <ccf>0000 0073 000a 0000 0040 0020 0020 0040 0040 0020 0020 0040 0020 0020 0040 0020 0020 0040 0020 0020 0040 0020 0020 0cac</ccf>
+    </code>
+  </remote>
+</lircremotes>
