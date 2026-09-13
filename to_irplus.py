@@ -8,7 +8,7 @@ Every <code> carries a Pronto hex payload in its <ccf> child, which maps
 directly onto irplus's PRONTO_HEX format, so no timing math is needed.
 
 Usage:
-    ./to_irplus.py sony/RM-470.xml            # -> sony/RM-470.irplus.xml
+    ./to_irplus.py sony/RM-470.xml            # -> sony/RM-470.irplus
     ./to_irplus.py sony                       # one vendor, in place
     ./to_irplus.py .                          # everything, in place
     ./to_irplus.py . -o irplus                # everything, into a separate tree
@@ -25,7 +25,7 @@ from xml.sax.saxutils import quoteattr, escape
 # lirc2xml produced files that are not valid XML: bare & in attributes, raw
 # <, > and " inside name="..." values, and stray control bytes. Repair all
 # three before parsing, since no XML parser (irplus's included) accepts them.
-SUFFIX = ".irplus.xml"
+SUFFIX = ".irplus"
 
 BROKEN_ATTR = [
     re.compile(r'(<code name=")(.*)(" codeno="[^"]*"\s*/?>)'),
@@ -143,7 +143,7 @@ def main():
         elif out_dir:
             target = os.path.join(out_dir, manufacturer, stem)
         else:
-            # Alongside the source, e.g. sony/RM-470.xml -> sony/RM-470.irplus.xml
+            # Alongside the source, e.g. sony/RM-470.xml -> sony/RM-470.irplus
             target = os.path.join(os.path.dirname(source), stem)
         os.makedirs(os.path.dirname(os.path.abspath(target)), exist_ok=True)
         with open(target, "w", encoding="utf-8") as fh:
