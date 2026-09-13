@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-derived (not run through lirc2xml/DecodeIR) from a real NEC1 decode
+  of the Topping RC-15A remote (bundled with several Topping DAC/amp
+  models) reported by forum user halfSpinDoctor on Audio Science Review:
+  https://www.audiosciencereview.com/forum/index.php?threads/remote-codes-for-topping.10708/
+
+  Every one of these 8 captured 32-bit words passes the standard NEC
+  address/command complement check (byte1==~byte0, byte3==~byte2), which
+  is strong evidence they are genuine captures rather than typos. NEC1
+  timing is a fixed public standard (unlike Sony SIRC's per-device
+  addressing), so this carries far less uncertainty than the Sony BD work.
+  decoding device/subdevice/obc/hex0 below are the raw captured address/
+  command bytes (not bit-reversed to match DecodeIR's internal, undocumented
+  convention - see the Sony files in this repo for why that isn't feasible
+  without running DecodeIR itself).
+-->
+<lircremotes creation-date="" creator="" lircversion="0.8.6" lirc2xml_version="0.1.2" configfile="" decodeir_version="2.40">
+  <remote name="TOPPING_RC-15A">
+    <lircdata type="SPACE_ENC" bits="32" flags="16400" eps="30" aeps="100" pthree="0" sthree="0" ptwo="0" stwo="0" pone="560" sone="1690" pzero="560" szero="560" plead="0" ptrail="560" pfoot="0" sfoot="0" prepeat="0" srepeat="0" pre_data_bits="0" pre_data="0" post_data_bits="0" post_data="0" pre_p="0" pre_s="0" post_p="0" post_s="0" gap="108000" gap2="0" repeat_gap="0" toggle_bit="0" toggle_bit_mask="0" min_repeat="0" min_code_repeat="0" freq="38000" duty_cycle="0" toggle_mask="0" rc6_mask="0" baud="0" bits_in_byte="0" parity="0" stop_bits="0" ignore_mask="0"/>
+    <code name="KEY_POWER" codeno="0x0000000011EE18E7">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="24" hex0="231" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0602</ccf>
+    </code>
+    <code name="KEY_MUTE" codeno="0x0000000011EE609F">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="96" hex0="159" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0040 0015 0602</ccf>
+    </code>
+    <code name="KEY_LEFT" codeno="0x0000000011EEE21D">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="226" hex0="29" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0602</ccf>
+    </code>
+    <code name="KEY_RIGHT" codeno="0x0000000011EEA857">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="168" hex0="87" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0015 0015 0040 0015 0015 0015 0602</ccf>
+    </code>
+    <code name="KEY_VOLUMEDOWN" codeno="0x0000000011EE6897">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="104" hex0="151" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0015 0015 0015 0015 0040 0015 0602</ccf>
+    </code>
+    <code name="KEY_VOLUMEUP" codeno="0x0000000011EE629D">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="98" hex0="157" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0015 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0040 0015 0602</ccf>
+    </code>
+    <code name="KEY_HEADPHONES" codeno="0x0000000011EE20DF">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="32" hex0="223" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0602</ccf>
+    </code>
+    <code name="KEY_LINEOUT" codeno="0x0000000011EE02FD">
+      <decoding protocol="NEC1" device="17" subdevice="238" obc="2" hex0="253" hex1="-1" hex2="-1" hex3="-1" misc="" error=""/>
+      <ccf>0000 006D 0022 0000 0156 00AB 0015 0040 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0015 0015 0040 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0040 0015 0015 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 0040 0015 0602</ccf>
+    </code>
+  </remote>
+</lircremotes>
